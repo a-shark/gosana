@@ -22,7 +22,7 @@ type Projects struct {
 
 type Project struct {
 	Data struct {
-		Id         float64   `json:id`
+		Id         int       `json:id`
 		Color      string    `json:color`
 		CreatedAt  time.Time `json:created_at`
 		ModifiedAt time.Time `json:modified_at`
@@ -32,37 +32,37 @@ type Project struct {
 		Notes      string    `json:name`
 
 		Members []struct {
-			Id   float64 `json:id`
-			Name string  `json:name`
+			Id   int    `json:id`
+			Name string `json:name`
 		}
 		Followers []struct {
-			Id   float64 `json:id`
-			Name string  `json:name`
+			Id   int    `json:id`
+			Name string `json:name`
 		}
 		Workspace struct {
-			Id   float64 `json:id`
-			Name string  `json:name`
+			Id   int    `json:id`
+			Name string `json:name`
 		}
 	}
 }
 
 type Tasks struct {
 	Data []struct {
-		Id   float64 `json:id`
-		Name string  `json:name`
+		Id   int    `json:id`
+		Name string `json:name`
 	}
 }
 
 type Task struct {
 	Data struct {
-		Id        float64 `json:id`
-		Name      string  `json:name`
-		Notes     string  `json:notes`
-		Completed bool    `json:completed`
+		Id        int    `json:id`
+		Name      string `json:name`
+		Notes     string `json:notes`
+		Completed bool   `json:completed`
 
 		Tags []struct {
-			Id   float64 `json:id`
-			Name string  `json:name`
+			Id   int    `json:id`
+			Name string `json:name`
 		}
 	}
 }
