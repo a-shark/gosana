@@ -88,12 +88,12 @@ type Task struct {
 // Client
 
 type Client struct {
-	User     string
-	Password string // field used as default value, blank
+	AccessKey string
+	//Password string // field used as default value, blank
 }
 
-func NewClient(password string) Client {
-	return Client{User: password}
+func NewClient(key string) Client {
+	return Client{AccessKey: key}
 }
 
 func (cli *Client) Request(endpoint string) ([]byte, error) {
@@ -108,7 +108,8 @@ func (cli *Client) Request(endpoint string) ([]byte, error) {
 	client := &http.Client{Transport: tr}
 	req, err := http.NewRequest("GET", defaultBaseUrl+endpoint, nil)
 	req.Header.Add("User-Agent", "Gosana/0.1")
-	req.SetBasicAuth(cli.User, cli.Password) // Asana sends <user>: so pwd is blank
+	req.Header.Add("Authorization", "Bearer "+cli.AccessKey)
+	//req.SetBasicAuth(cli.User, cli.Password) // Asana sends <user>: so pwd is blank
 	if err != nil {
 		return nil, err
 	}
